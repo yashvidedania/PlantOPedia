@@ -3,6 +3,7 @@ using PlantOPedia.Models;
 
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Text;
+using PlantOPedia.Data;
 
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -13,6 +14,11 @@ namespace PlantOPedia.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
+        readonly PlantdbContext _context;
+        public LoginController(PlantdbContext context)
+        {
+            _context = context;
+        }
         // GET: api/<LoginController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -27,21 +33,12 @@ namespace PlantOPedia.Controllers
             return "value";
         }
 
-        public List<Login> Userloginvalues()
-        {
-            List<Login> obj = new List<Login>();
-            obj.Add(new Login { Username = "user1", Pwd = "password1" });
-            obj.Add(new Login { Username = "user2", Pwd = "password2" });
-            obj.Add(new Login { Username = "user3", Pwd = "password3" });
-            obj.Add(new Login { Username = "user4", Pwd = "password4" });
-            obj.Add(new Login { Username = "user5", Pwd = "password5" });
-            return obj;
-        }
+        
         // POST api/<LoginController>
         [HttpPost]
-        public ActionResult Post([FromBody] Login  login)
+        public ActionResult Post([FromBody] LoginCredentials  login)
         {
-            var pass = login.Pwd;
+            var pass = login.Password;
             const string Salt = "CGYzqeN4plZekNC88Umm1Q==";
             byte[] bytesSalt = Encoding.ASCII.GetBytes(Salt);
 
@@ -53,7 +50,7 @@ namespace PlantOPedia.Controllers
             numBytesRequested: 32));
             //Console.WriteLine($"Hashed: {hashed}");
 
-            var FindUser =  _ .FirstOrDefault(f => f.Username == login.Username && f.Pwd == hashedPassword);
+            var FindUser = _context.Users.FirstOrDefault(user => user.Email == login.Email && user.Password == hashedPassword);
             if (FindUser != null)
             {
                 return Ok("Success");
