@@ -10,29 +10,33 @@ namespace PlantOPedia.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        readonly PlantdbContext _context;   
+        readonly PlantdbContext _context;
         public ProductController(PlantdbContext context)
         {
             _context = context;
         }
         // GET: api/<ProductController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult GetAll()
         {
-            return new string[] { "value1", "value2" };
+            return Ok(_context.Products.ToList());
         }
 
         // GET api/<ProductController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(Guid id)
         {
-            return "value";
+            return Ok(_context.Products.Find(id));
+                
         }
 
         // POST api/<ProductController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] Product product)
         {
+            _context.Products.Add(product);
+            _context.SaveChanges();
+            return Ok("Product Added");
         }
 
         // PUT api/<ProductController>/5
@@ -61,10 +65,10 @@ namespace PlantOPedia.Controllers
             //Soft Delete
             var exists = _context.Products.Find(id);
             if (exists != null)
-            {
+        {
                 exists.IsDeleted = true;
                 _context.Products.Update(exists);
-                _context.SaveChanges();
+            _context.SaveChanges();
 
                 return Ok("Success");
             }
