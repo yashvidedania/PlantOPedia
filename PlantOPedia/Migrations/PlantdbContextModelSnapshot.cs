@@ -36,7 +36,7 @@ namespace PlantOPedia.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("PlantOPedia.Models.Order", b =>
@@ -68,7 +68,7 @@ namespace PlantOPedia.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("PlantOPedia.Models.Product", b =>
@@ -104,7 +104,7 @@ namespace PlantOPedia.Migrations
 
                     b.HasIndex("ProductTypeId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("PlantOPedia.Models.ProductType", b =>
@@ -126,7 +126,7 @@ namespace PlantOPedia.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("ProductTypes");
+                    b.ToTable("ProductTypes", (string)null);
                 });
 
             modelBuilder.Entity("PlantOPedia.Models.Role", b =>
@@ -143,7 +143,7 @@ namespace PlantOPedia.Migrations
 
                     b.HasKey("RoleId");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Roles", (string)null);
                 });
 
             modelBuilder.Entity("PlantOPedia.Models.Users", b =>
@@ -185,7 +185,7 @@ namespace PlantOPedia.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("PlantOPedia.Models.Order", b =>
