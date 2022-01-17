@@ -18,7 +18,7 @@ namespace PlantOPedia.Models
         public string ImageUrl { get; set; }
         [ForeignKey("ProductType")]
         public Guid ProductTypeId { get; set; }
-        public ProductType productType { get; set; }
+        public ProductType? ProductType { get; set; }
 
         public bool IsDeleted { get; set; }
     }

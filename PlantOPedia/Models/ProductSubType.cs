@@ -2,16 +2,16 @@
 {
     public enum ProductSubType
     {
-        Vegitables_seeds,
-        flowers_seeds,
-        herb_seed,
-        fruite_seeds,
-        Artificial,
-        Natural,
-        Decore_type,
-        for_Wellness,
-        Office,
-        for_Balcony,
-        Indors
+        VegitablesSeeds=0,
+        FlowersSeeds=1,
+        HerbsSeed=2,
+        FruiteSeeds=3,
+        Artificial=4,
+        Natural=5,
+        DecoreType=6,
+        ForWellness=7,
+        Office=8,
+        ForBalcony=9,
+        Indors=10
     }
 }
