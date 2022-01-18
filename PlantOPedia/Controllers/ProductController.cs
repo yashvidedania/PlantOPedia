@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PlantOPedia.Data;
 using PlantOPedia.Models;
 
@@ -45,7 +46,7 @@ namespace PlantOPedia.Controllers
         {
             //var Productexists = _context.Products.FirstOrDefault(p => p.ProductId.Equals(id));
 
-            var exists = _context.Products.FirstOrDefault(product => product.ProductId == id && product.IsDeleted == false);
+            var exists = _context.Products.AsNoTracking().FirstOrDefault(product => product.ProductId == id && product.IsDeleted == false);
             if(exists != null)
             {
                 _context.Products.Update(product);
