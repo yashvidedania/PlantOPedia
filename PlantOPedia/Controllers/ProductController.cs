@@ -26,7 +26,7 @@ namespace PlantOPedia.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(Guid id)
         {
-            return Ok(_context.Products.Find(id));
+            return Ok(_context.Products.FirstOrDefault(product => product.ProductId == id && product.IsDeleted == false)); ;
                 
         }
 
