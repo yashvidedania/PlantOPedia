@@ -3,9 +3,19 @@ using PlantOPedia.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 // Add services to the container.
+builder.Services.AddCors(option =>
+{
+    option.AddPolicy(name: MyAllowSpecificOrigins,
+                      builder =>
+                      {
+                          builder.AllowAnyOrigin();
 
+                      });
+
+});
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<PlantdbContext>(opts => opts.UseSqlServer(configuration["ConnectionStrings:PlantDB"]));
 builder.Services.AddControllers();
@@ -22,6 +32,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseCors(MyAllowSpecificOrigins);
 
 
 app.MapControllerRoute(
@@ -31,3 +42,5 @@ app.MapControllerRoute(
 app.MapFallbackToFile("index.html"); ;
 
 app.Run();
+
+
