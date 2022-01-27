@@ -10,7 +10,6 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { Orderlistcomponent } from './orders/order-list.component';
 import { AddOrderComponent } from './AddOrder/add-order.component';
 import { ProductsComponent } from './products/product-list.component';
@@ -22,11 +21,9 @@ import { ProductsComponent } from './products/product-list.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    LoginComponent
-    FetchDataComponent,
+    LoginComponent,
     Orderlistcomponent,
-    AddOrderComponent
-    FetchDataComponent,
+    AddOrderComponent,
     ProductsComponent
   ],
   imports: [
@@ -40,8 +37,8 @@ import { ProductsComponent } from './products/product-list.component';
       { path: 'counter', component: CounterComponent },
       { path: 'addorder', component: AddOrderComponent},
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'login', component: LoginComponent }
-      {path: 'product',component:ProductsComponent},
+      { path: 'login', component: LoginComponent },
+      {path: 'product',component:ProductsComponent}
     ])
   ],
   providers: [],
