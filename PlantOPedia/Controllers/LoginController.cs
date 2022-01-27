@@ -48,12 +48,13 @@ namespace PlantOPedia.Controllers
             prf: KeyDerivationPrf.HMACSHA256,
             iterationCount: 100000,
             numBytesRequested: 32));
-            //Console.WriteLine($"Hashed: {hashed}");
+            //Console.WriteLine($"Hashed: {hashedPassword}");
 
             var FindUser = _context.Users.FirstOrDefault(user => user.Email == login.Email && user.Password == hashedPassword);
             if (FindUser != null)
             {
-                return Ok("Success");
+                SuccessResponse successResponse = new SuccessResponse() { Code = "200", Message = "Success"};
+                return Ok(successResponse);
             }
             else
             {
