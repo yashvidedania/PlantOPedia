@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Orderlistcomponent } from './orders/order-list.component';
 import { AddOrderComponent } from './AddOrder/add-order.component';
+import { ProductsComponent } from './products/product-list.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,8 @@ import { AddOrderComponent } from './AddOrder/add-order.component';
     FetchDataComponent,
     Orderlistcomponent,
     AddOrderComponent
+    FetchDataComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -38,6 +41,7 @@ import { AddOrderComponent } from './AddOrder/add-order.component';
       { path: 'addorder', component: AddOrderComponent},
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'login', component: LoginComponent }
+      {path: 'product',component:ProductsComponent},
     ])
   ],
   providers: [],

@@ -1,0 +1,12 @@
+
+.col .card{
+    overflow: hidden;
+ }
+ .col .card img{
+     height: 200px !important;
+     width: 100% !important;
+ }
+ .col.card{
+     height: 300px !important;
+ }
+ 
