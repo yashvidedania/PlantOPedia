@@ -13,7 +13,7 @@ namespace PlantOPedia.Models
         public string Name { get; set; }
         [Required, EmailAddress(ErrorMessage = "Please enter valid email id !!")]
         public string Email { get; set; }
-        [Required, StringLength(10, MinimumLength = 6, ErrorMessage = "Password must contain 6 to 10 range")]
+        [Required, StringLength(50, MinimumLength = 6, ErrorMessage = "Password must contain 6 to 50 range")]
         public string Password { get; set; }
         public string Address { get; set; }
         [Required, MaxLength(10)]
