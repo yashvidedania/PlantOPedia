@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -11,6 +11,8 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Orderlistcomponent } from './orders/order-list.component';
+import { AddOrderComponent } from './AddOrder/add-order.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     CounterComponent,
     FetchDataComponent,
     LoginComponent
+    FetchDataComponent,
+    Orderlistcomponent,
+    AddOrderComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -27,10 +32,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
+      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'order', component: Orderlistcomponent  },
       { path: 'counter', component: CounterComponent },
+      { path: 'addorder', component: AddOrderComponent},
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'login', component: LoginComponent },
-      { path: '', component: HomeComponent, pathMatch: 'full' }
+      { path: 'login', component: LoginComponent }
     ])
   ],
   providers: [],

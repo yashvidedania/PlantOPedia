@@ -14,11 +14,11 @@ namespace PlantOPedia.Models
         public string Address { get; set; }
         [ForeignKey("Users")]
         public Guid UserId { get; set; }
-        public Users Users { get; set; }
+        public Users? Users { get; set; }
 
         [ForeignKey("Product")]
         public Guid ProductId { get; set; }
-        public Product Product { get; set; }
+        public Product? Product { get; set; }
         public bool IsDeleted { get; set; }
     }
 }
