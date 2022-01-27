@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { isNotNullOrUndefine } from "../Shared/methods";
+import { SuccessEnum } from "../Shared/models";
 import { IUser } from "./login";
 import { LoginService } from "./login.service";
 
@@ -34,24 +36,26 @@ export class LoginComponent implements OnInit {
     console.log(this.loginform.value);
     this.LoginService.checkLogin( this.loginform.value ).subscribe(
       (loginresponse) => {
-        this.loginresponce = loginresponse;
-        console.log("Responce from api" , this.loginresponce);
-        if (this.loginresponce == "Success") {
-          debugger
-          this.router.navigate(['']);
+        if(isNotNullOrUndefine(loginresponse))
+        {
+          this.loginresponce = loginresponse;
+          // console.log("Responce from api" , this.loginresponce);
+          if (this.loginresponce.message === SuccessEnum.message ) {
+            this.router.navigate(['']);
+          }
+          else {
+            alert("Invalid Email or Password ");
+            this.router.navigate(['/login']);
+          }
         }
-        else {
-          debugger
-          this.router.navigate(['/login']);
-        }
+        
       },
       (errorResponce) => {
-        alert(errorResponce);
+        alert(errorResponce + "Invalid Email or Password");
       }
     )
   }
 
-
-
-
+  
 }
+

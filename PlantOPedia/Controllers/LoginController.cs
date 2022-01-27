@@ -58,7 +58,8 @@ namespace PlantOPedia.Controllers
             }
             else
             {
-                return NotFound("Invalid Username or Password");
+                ErrorResponse errorResponse = new ErrorResponse() { Code = "400", Message = "Not Found" };
+                return NotFound(errorResponse);
             }
         }
 
