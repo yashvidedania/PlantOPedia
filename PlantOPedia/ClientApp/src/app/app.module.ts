@@ -37,7 +37,7 @@ import { ProductUpdateComponent } from './products/product-update.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'order', component: Orderlistcomponent  },
       { path: 'counter', component: CounterComponent },
-      { path: 'addorder', component: AddOrderComponent},
+      { path: 'addorder/:id', component: AddOrderComponent},
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'login', component: LoginComponent },
       { path: 'product',component:ProductsComponent},
