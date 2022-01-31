@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { IOrder } from "./order";
 import { Orderservice_api } from "./order.service";
@@ -11,6 +11,7 @@ export class Orderlistcomponent implements OnInit {
 
   pageTitle: string = 'Oredr List';
   orders: IOrder[] = [];
+  deleteResponse: any;
 
   constructor(private route: Router, private Orderservice_api: Orderservice_api) {
 
@@ -34,5 +35,15 @@ export class Orderlistcomponent implements OnInit {
      
   }
 
+  deleteorder(id:any) {
+    this.Orderservice_api.deleteOrder(id).subscribe({
+      next: deleteResponse => {
+        this.deleteResponse = deleteResponse;
+        console.log("Delete Success",this.deleteResponse)
+
+      }
+
+    })
+  }
 
 }

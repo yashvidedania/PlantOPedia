@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PlantOPedia.Data;
 using PlantOPedia.Models;
 using System.Linq;
@@ -20,8 +21,12 @@ namespace PlantOPedia.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
+           
 
-            return Ok(_context.Orders.ToList());
+            return Ok(_context.Orders.Include(order => order.Product)
+                                      .Include(order => order.Users)
+                                      .Where(order => order.IsDeleted == false)
+                                      .ToList());
 
         }
 
@@ -29,7 +34,7 @@ namespace PlantOPedia.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(Guid id)
         {
-
+      
             return Ok(_context.Orders.FirstOrDefault(order => order.OrderId == id && order.IsDeleted == false));
 
         }
@@ -40,7 +45,8 @@ namespace PlantOPedia.Controllers
         {
             _context.Orders.Add(order);
             _context.SaveChanges();
-            return Ok("Changes are Saved Seccessful");
+            SuccessResponse successResponse = new SuccessResponse() { Code = "200", Message = "Success" };
+            return Ok(successResponse);
         }
 
         // PUT api/<OrderController>/5            

@@ -23,7 +23,7 @@
               <td>{{ord.userId}}</td>
               <td>{{ord.productId}}</td>
               <td>
-                <button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-danger" (click)="deleteorder(ord.orderId)">Delete</button>
               </td>
             </tr>
           </tbody>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, FormControl } from "@angular/forms";
 import { Router } from "@angular/router";
+import { IOrder } from "../orders/order";
 import { Orderservice_api } from "../orders/order.service";
+import { SuccessEnum } from "../Shared/models";
 
 @Component({
   selector:'app-add',
@@ -11,7 +13,7 @@ export class AddOrderComponent implements OnInit {
 
   dateVal = new Date();
   orderresponse: any;
-
+  
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private OrderService_api:Orderservice_api){}
@@ -23,7 +25,9 @@ export class AddOrderComponent implements OnInit {
         userId: ["074056a6-a87a-4c58-9388-09bedda8824c"],
         productId:["9df46efd-705c-4c7d-f3b7-08d9e18977b0"],
         orderdate:[this.dateVal],
-        address:[undefined]
+        address:[undefined],
+        price: [300],
+        productName: ["BeetRoot"]
       })
 
   }
@@ -32,7 +36,7 @@ export class AddOrderComponent implements OnInit {
       this.OrderService_api.addOrder(this.orderform.value).subscribe(
           (orderresponse) => {
               this.orderresponse = orderresponse;
-              if (this.orderresponse.toString() == "Confirm Your Order") {
+              if (this.orderresponse.message === SuccessEnum.message ) {
                   this.router.navigate(['']);
               }
               else {

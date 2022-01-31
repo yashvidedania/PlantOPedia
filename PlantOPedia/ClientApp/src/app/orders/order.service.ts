@@ -19,5 +19,9 @@ export class Orderservice_api {
     return this.http.post<IOrder>(this.orderUrl, order);
   }
 
+  deleteOrder(OrderId: any): Observable<any> {
+    return this.http.delete(this.orderUrl + "/" + OrderId);
+}
+
 
 }
