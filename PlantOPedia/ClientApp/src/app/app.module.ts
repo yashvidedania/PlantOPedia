@@ -13,6 +13,8 @@ import { LoginComponent } from './login/login.component';
 import { Orderlistcomponent } from './orders/order-list.component';
 import { AddOrderComponent } from './AddOrder/add-order.component';
 import { ProductsComponent } from './products/product-list.component';
+import { ProductDetailComponent } from './products/product-detail.component';
+import { AddProductComponent } from './AddProduct/add-product.component';
 import { ProductUpdateComponent } from './products/product-update.component';
 
 @NgModule({
@@ -26,6 +28,8 @@ import { ProductUpdateComponent } from './products/product-update.component';
     Orderlistcomponent,
     AddOrderComponent,
     ProductsComponent,
+    AddProductComponent,
+    ProductDetailComponent,
     ProductUpdateComponent
   ],
   imports: [
@@ -40,8 +44,9 @@ import { ProductUpdateComponent } from './products/product-update.component';
       { path: 'addorder/:id', component: AddOrderComponent},
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'product',component:ProductsComponent},
-      {path: 'product/:id',component:ProductUpdateComponent}
+      {path: 'product',component:ProductsComponent},
+      {path:'product/:id',component:ProductDetailComponent},
+      {path:'addproduct',component:AddProductComponent}
     ])
   ],
   providers: [],

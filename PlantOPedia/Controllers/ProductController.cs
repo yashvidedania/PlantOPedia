@@ -39,7 +39,8 @@ namespace PlantOPedia.Controllers
         {
             _context.Products.Add(product);
             _context.SaveChanges();
-            return Ok("Product Added");
+            SuccessResponse successResponse = new SuccessResponse() { Code = "200", Message = "Success" };
+            return Ok(successResponse);
         }
 
         // PUT api/<ProductController>/5

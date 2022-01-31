@@ -1,0 +1,19 @@
+<div class="container m-auto d-flex justify-content-center">
+<div class="card mb-3 h-100" style="height: 500px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img [src]='product.imageUrl' class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h3 class="card-title">{{product.productName}}</h3>
+          <h5 class="card-text">{{product.price | currency :'INR'}}</h5>
+          <h6>Description</h6>
+          <p class="card-text">{{product.description}}</p>
+          <p class="card-text"></p>
+          <a href="#" class="btn btn-primary" [routerLink]="['/product']">Back</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

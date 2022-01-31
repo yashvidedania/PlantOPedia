@@ -3,6 +3,7 @@
     productName: string;
     description: string;
     price: number;
+
     imageUrl: string;
     productTypeId: string;
     productType: {

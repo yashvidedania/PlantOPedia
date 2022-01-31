@@ -1,13 +1,14 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
-import {catchError,tap} from 'rxjs/operators';
 import { IProduct } from "./product";
 
 @Injectable({
     providedIn:'root'
 })
 export class ProductService{
+   
+    
   private productUrl = 'https://localhost:7258/api/product';
 
   constructor(private http:HttpClient){}
@@ -27,5 +28,10 @@ export class ProductService{
 
     deleteProduct(pid: any) :Observable <any> {
         return this.http.delete<any>(this.productUrl + "/" + pid);
+    }
+
+    
+    addproduct(value: any):Observable <IProduct> {
+      return this.http.post<IProduct>(this.productUrl, value);
     }
 }
