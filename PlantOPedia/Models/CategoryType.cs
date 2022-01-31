@@ -1,5 +1,9 @@
-﻿namespace PlantOPedia.Models
+﻿using System.Text.Json.Serialization;
+
+namespace PlantOPedia.Models
 {
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+
     public enum CategoryType
     {
         Seeds=0,

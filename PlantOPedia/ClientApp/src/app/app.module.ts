@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { Orderlistcomponent } from './orders/order-list.component';
 import { AddOrderComponent } from './AddOrder/add-order.component';
 import { ProductsComponent } from './products/product-list.component';
+import { ProductUpdateComponent } from './products/product-update.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProductsComponent } from './products/product-list.component';
     LoginComponent,
     Orderlistcomponent,
     AddOrderComponent,
-    ProductsComponent
+    ProductsComponent,
+    ProductUpdateComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -38,7 +40,8 @@ import { ProductsComponent } from './products/product-list.component';
       { path: 'addorder', component: AddOrderComponent},
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'login', component: LoginComponent },
-      {path: 'product',component:ProductsComponent}
+      { path: 'product',component:ProductsComponent},
+      {path: 'product/:id',component:ProductUpdateComponent}
     ])
   ],
   providers: [],

@@ -1,5 +1,8 @@
-﻿namespace PlantOPedia.Models
+﻿using System.Text.Json.Serialization;
+
+namespace PlantOPedia.Models
 {
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum ProductSubType
     {
         VegitablesSeeds=0,

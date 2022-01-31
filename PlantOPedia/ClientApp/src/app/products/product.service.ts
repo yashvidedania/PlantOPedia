@@ -13,7 +13,19 @@ export class ProductService{
   constructor(private http:HttpClient){}
 
     getProducts() : Observable <IProduct[]> {
-        return this.http.get<IProduct[]>(this.productUrl)
+        return this.http.get<IProduct[]>(this.productUrl);
     }
     
+    getProductById(pid : any ) : Observable<IProduct> {
+        return this.http.get<IProduct>(this.productUrl + "/" + pid);
+
+    }
+
+    updateProduct(pid :any ,product : any) : Observable <any> {
+        return this.http.put<any>(this.productUrl + "/" + pid, product );
+    }
+
+    deleteProduct(pid: any) :Observable <any> {
+        return this.http.delete<any>(this.productUrl + "/" + pid);
+    }
 }

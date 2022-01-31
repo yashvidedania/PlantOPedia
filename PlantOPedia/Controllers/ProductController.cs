@@ -20,14 +20,16 @@ namespace PlantOPedia.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(_context.Products.ToList());
+            return Ok(_context.Products.Include(p => p.ProductType).
+                                    ThenInclude(c => c.Category).ToList());
         }
 
         // GET api/<ProductController>/5
         [HttpGet("{id}")]
         public IActionResult Get(Guid id)
         {
-            return Ok(_context.Products.FirstOrDefault(product => product.ProductId == id && product.IsDeleted == false)); ;
+            return Ok(_context.Products.Include(p => p.ProductType).
+                                    ThenInclude(c => c.Category).FirstOrDefault(product => product.ProductId == id && product.IsDeleted == false)); ;
                 
         }
 
@@ -52,11 +54,13 @@ namespace PlantOPedia.Controllers
                 _context.Products.Update(product);
                 _context.SaveChanges();
 
-                return Ok("Success");
+                SuccessResponse successResponse = new SuccessResponse() { Code = "200", Message = "Success" };
+                return Ok(successResponse);
             }
 
-            return NotFound("This Product is not avaliable");
-            
+            ErrorResponse errorResponse = new ErrorResponse() { Code = "404", Message = "Not Found" };
+            return NotFound(errorResponse);
+
         }
 
         // DELETE api/<ProductController>/5
@@ -69,13 +73,15 @@ namespace PlantOPedia.Controllers
         {
                 exists.IsDeleted = true;
                 _context.Products.Update(exists);
-            _context.SaveChanges();
+                _context.SaveChanges();
 
-                return Ok("Success");
+                SuccessResponse successResponse = new SuccessResponse() { Code = "200", Message = "Success" };
+                return Ok(successResponse);
             }
             else
             {
-                return NotFound("No Product Found");
+                ErrorResponse errorResponse = new ErrorResponse() { Code = "404", Message = "Not Found" };
+                return NotFound(errorResponse);
             }
 
         }
