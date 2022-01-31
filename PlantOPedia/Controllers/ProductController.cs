@@ -21,7 +21,7 @@ namespace PlantOPedia.Controllers
         public IActionResult GetAll()
         {
             return Ok(_context.Products.Include(p => p.ProductType).
-                                    ThenInclude(c => c.Category).ToList());
+                                    ThenInclude(c => c.Category).Where(product => product.IsDeleted == false).ToList());
         }
 
         // GET api/<ProductController>/5

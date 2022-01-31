@@ -11,6 +11,7 @@ import { ProductService } from "./product.service";
 export class ProductDetailComponent implements OnInit{
     pageTitle: string ='Product Detail';
     product!:IProduct;
+    deleteResponse: any;
 
 
     constructor(private route:ActivatedRoute,
@@ -18,7 +19,7 @@ export class ProductDetailComponent implements OnInit{
                 private ProductService:ProductService) { }
 
     productDetail(pid:any){
-        this.ProductService.getProductByid(pid).subscribe({
+        this.ProductService.getProductById(pid).subscribe({
             next:(product)=>{
                 this.product=product;
                 console.log("Getting Product detail",this.product);
@@ -30,4 +31,14 @@ export class ProductDetailComponent implements OnInit{
         this.productDetail(id);
         
     }
+    deleteProduct(pid:any) {
+        this.ProductService.deleteProduct(pid).subscribe({
+          next: deleteResponse => {
+            this.deleteResponse = deleteResponse;
+            console.log("Delete Success",this.deleteResponse)
+    
+          }
+    
+        })
+      }
 }
