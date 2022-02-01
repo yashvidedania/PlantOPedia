@@ -2,6 +2,7 @@ import { Route } from "@angular/compiler/src/core";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, FormControl } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { LoginService } from "../login/login.service";
 import { Orderservice_api } from "../orders/order.service";
 import { IProduct } from "../products/product";
 import { ProductService } from "../products/product.service";
@@ -16,27 +17,29 @@ export class AddOrderComponent implements OnInit {
   dateVal = new Date();
   orderresponse: any;
   product!: IProduct; 
+  uId: any;
 
   
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private route: ActivatedRoute,
               private OrderService_api:Orderservice_api,
-              private productService: ProductService){}
+              private productService: ProductService,
+              private loginService: LoginService){}
 
   orderform:FormGroup=new FormGroup({});
 
   ngOnInit(): void {
 
     const productId = this.route.snapshot.paramMap.get('id');
-
+    this.uId =this.loginService.getLoggedInUser(); 
     this.initilizeformgroup();
-    this.productDetail(productId);  
+    this.productDetail(productId); 
   }
 
   initilizeformgroup() {
     this.orderform = this.formBuilder.group({
-     userId: ["09a0a142-5fca-4914-898a-f689d1caf427"],
+     userId: [this.uId],
      name: ['abcd'],
      productId:[undefined],
      orderdate:[this.dateVal],
@@ -45,6 +48,8 @@ export class AddOrderComponent implements OnInit {
      productName: [undefined]
    })
  }
+
+ 
 
 
   productDetail(pid: any) {

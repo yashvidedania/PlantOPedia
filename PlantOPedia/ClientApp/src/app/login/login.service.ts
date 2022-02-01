@@ -21,6 +21,14 @@ export class LoginService {
     return this.http.post<IUser>(this.loginUrl, loginObj);
   }
 
+  getLoggedInUser(): string | null {
+    return localStorage.getItem('userId');
+  }
+
+  getLoggedInUserType(): string | null {
+    return localStorage.getItem('roleType');
+  }
+
 
   isUserLoggedIn(): boolean {
     // this.loggedIn = JSON.stringify(localStorage.getItem('userId'));
