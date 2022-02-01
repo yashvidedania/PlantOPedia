@@ -9,11 +9,20 @@ import { LoginService } from '../login/login.service';
 export class NavMenuComponent implements OnInit {
   isExpanded = false;
   loggedIn : any;
+  roleType!:string |null;
+  roleFlag!: boolean;
 
   constructor (private loginService : LoginService){}
 
   ngOnInit(): void {
     this.loggedIn = this.loginService.isUserLoggedIn();
+    this.roleType = this.loginService.getLoggedInUserType(); 
+    if(this.roleType == 'Admin'){
+        this.roleFlag = true;
+    }
+    else {
+        this.roleFlag = false;
+    }
   }
 
 

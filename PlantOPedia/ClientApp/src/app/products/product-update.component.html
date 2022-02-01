@@ -35,14 +35,22 @@
     <div class="row mb-3">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Product Type</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" formControlName="productSubType" >
-        </div>
-    </div>
-    <div class="row mb-3">
-        <label for="inputPassword3" class="col-sm-2 col-form-label">Category</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" formControlName="categoryType" >
-        </div>
+          <select class="form-control" formControlName="productTypeId">
+              <option value="Default"></option>
+          <option *ngFor="let ptype of productTypeResponse" [value]="ptype.productTypeId">{{ptype.productSubType}}</option>
+          <!-- <option value = "FlowerSeeds"> Flower Seeds </option>
+          <option value = "HerbSeed"> Herb Seeds </option>
+          <option value = "FruitSeeds"> Fruit Sedds</option>
+          <option value = "Artificial"> Artificial </option>
+          <option value = "Natural"> Natural</option>
+          <option value = "DecorType"> Decor Type </option>
+          <option value = "ForWellness"> For Wellness </option>
+          <option value = "Office"> For Office </option>
+          <option value = "ForBalcony"> For Balcony </option>
+          <option value = "ForIndors"> For Indoors </option>
+           -->
+          </select>
+      </div>
     </div>
     <div class="row mb-3 d-flex">
         <button type="submit" (click)="updateProduct()" class="btn btn-primary">Update</button>

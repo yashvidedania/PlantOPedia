@@ -5,9 +5,9 @@ namespace PlantOPedia.Models
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum ProductSubType
     {
-        VegitablesSeeds=0,
+        VegetablesSeeds=0,
         FlowersSeeds=1,
-        HerbsSeed=2,
+        HerbsSeeds=2,
         FruiteSeeds=3,
         Artificial=4,
         Natural=5,
@@ -15,6 +15,6 @@ namespace PlantOPedia.Models
         ForWellness=7,
         Office=8,
         ForBalcony=9,
-        Indors=10
+        Indoors=10
     }
 }

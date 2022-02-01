@@ -9,6 +9,7 @@
     productType: {
         productSubType: string; 
         category: {
+            categoryId:string;
             categoryType: string;
         }
     };

@@ -21,6 +21,8 @@ export class ProductUpdateComponent implements OnInit {
 
   product!: IProduct; 
   productdetail: any;
+  productTypeResponse:any;
+  
 
   productform: FormGroup = new FormGroup({});
 
@@ -33,6 +35,7 @@ export class ProductUpdateComponent implements OnInit {
 
     this.initilizeformgroup();
     this.productDetail(productId);
+    this.productTypeDetail();
 
 
   }
@@ -45,7 +48,7 @@ export class ProductUpdateComponent implements OnInit {
       imageUrl: [undefined],
       productTypeId: [undefined],
       productSubType: [undefined],
-      categoryType: [undefined]
+      categoryId: [undefined]
     })
   }
 
@@ -64,11 +67,19 @@ export class ProductUpdateComponent implements OnInit {
           imageUrl: this.product.imageUrl,
           productTypeId: this. product.productTypeId,
           productSubType: this.product.productType.productSubType,
-          categoryType: this.product.productType.category.categoryType
+          categoryId: this.product.productType.category.categoryId
         })
 
       }
     })
+  }
+  productTypeDetail(){
+    this.productService.getProductTypes().subscribe(
+        (productTypeResponse)=> {
+            this.productTypeResponse = productTypeResponse;
+            console.log("fetch data",this.productTypeResponse);
+        }
+    )
   }
 
   updateProduct() {
