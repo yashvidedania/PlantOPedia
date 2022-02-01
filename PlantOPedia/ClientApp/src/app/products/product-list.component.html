@@ -5,14 +5,14 @@
 
     <div class="row row-cols-1 row-cols-md-5 g-4">
     <div class="col" *ngFor='let product of products'>
-      <div class="card h-100">
+      <div class="card h-100 p-2">
         <img [src]='product.imageUrl' [title]='product.productName'
              [style.width.px]='imageWidth'
-             [style.margin.px]='imageMargin' [style.object-fit]='imagefit' class="card-img-top" alt="...">
+             [style.object-fit]='imagefit' class="card-img-top" alt="...">
 
         <div class="card-body">
           <h5 class="card-title">{{product.productName}}</h5>
-          <h6 class="card-text">{{product.price}}</h6>
+          <h6 class="card-text">{{product.price | currency: 'INR'}}</h6>
           </div>
           <a href="#" class="btn btn-primary" [routerLink]="['/product',product.productId]">Get More Information</a>
         </div>

@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { isNotNullOrUndefine } from "../Shared/methods";
 import { IUser } from "./login";
 
 @Injectable({
@@ -13,7 +14,25 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  checkLogin(loginObj: any): Observable<any> {
-    return this.http.post(this.loginUrl, loginObj);
+  loggedIn: string = '';
+  // userName: string = '';
+
+  checkLogin(loginObj: any): Observable<IUser> {
+    return this.http.post<IUser>(this.loginUrl, loginObj);
   }
+
+
+  isUserLoggedIn(): boolean {
+    // this.loggedIn = JSON.stringify(localStorage.getItem('userId'));
+    if(isNotNullOrUndefine(localStorage.getItem('userId')))
+    {
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+
+
 }

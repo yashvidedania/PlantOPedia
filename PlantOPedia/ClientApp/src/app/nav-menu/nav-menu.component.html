@@ -28,30 +28,10 @@
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/counter']"
-              >Counter</a
-            >
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/fetch-data']"
-              >Fetch data</a
-            >
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/login']"
-              >Login</a
-            >
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/order']"
               >Order</a
             >
           </li>
-        <li class="nav-item" [routerLinkActive]="['link-active']">
-          <a class="nav-link text-dark" [routerLink]="['/addorder']"
-            >AddOrder</a
-          >
-        </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/product']"
               >Product</a
@@ -60,6 +40,16 @@
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/addproduct']"
               >Add Product</a
+            >
+          </li>
+          <li class="nav-item" *ngIf="loggedIn" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" (click)="removeLoggedInUserDetails()" [routerLink]="['/login']"
+              >Logout</a
+            >
+          </li>
+          <li class="nav-item" *ngIf="!loggedIn" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark"  [routerLink]="['/login']"
+              >Login</a
             >
           </li>
         </ul>

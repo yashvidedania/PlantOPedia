@@ -46,6 +46,7 @@ import { ProductUpdateComponent } from './products/product-update.component';
       { path: 'login', component: LoginComponent },
       {path: 'product',component:ProductsComponent},
       {path:'product/:id',component:ProductDetailComponent},
+      {path: 'products/:id', component:ProductUpdateComponent},
       {path:'addproduct',component:AddProductComponent}
     ])
   ],

@@ -36,7 +36,8 @@ export class AddOrderComponent implements OnInit {
 
   initilizeformgroup() {
     this.orderform = this.formBuilder.group({
-     userId: ["074056a6-a87a-4c58-9388-09bedda8824c"],
+     userId: ["09a0a142-5fca-4914-898a-f689d1caf427"],
+     name: ['abcd'],
      productId:[undefined],
      orderdate:[this.dateVal],
      address:[undefined],
@@ -66,7 +67,9 @@ export class AddOrderComponent implements OnInit {
           (orderresponse) => {
               this.orderresponse = orderresponse;
               if (this.orderresponse.message === SuccessEnum.message ) {
-                  this.router.navigate(['']);
+                  // this.router.navigate(['']);
+                  alert("Order Placed Successfully");
+
               }
               else {
                   this.router.navigate(['/addorder']);

@@ -77,7 +77,8 @@ export class ProductUpdateComponent implements OnInit {
       next: (upresponce) => {
         this.upresponce = upresponce;
         if (this.upresponce.message === SuccessEnum.message ) {
-          this.router.navigate(['']);
+          // this.router.navigate(['']);
+          alert("Product Updated Successfully");
         }
         else {
           alert("Some Error occured");

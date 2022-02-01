@@ -25,7 +25,7 @@ export class AddProductComponent implements OnInit {
         description:[undefined],
         price:[undefined],
         imageUrl:[undefined],
-        productTypeId:["699e02d4-f788-4117-b74b-040019aaec0a"]
+        productTypeId:["44988d72-5550-4dae-c960-08d9e189d7a4"]
       })
 
   }
@@ -35,7 +35,9 @@ export class AddProductComponent implements OnInit {
         (productresponse) => {
             this.productresponse = productresponse;
             if (this.productresponse.message === SuccessEnum.message) {
-                this.router.navigate(['']);
+                // this.router.navigate(['']);
+                alert("Product Added Successfully");
+
             }
             else {
                 this.router.navigate(['/addproduct']);

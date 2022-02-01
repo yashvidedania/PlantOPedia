@@ -8,20 +8,20 @@
         <table class="table">
           <thead>
             <tr>
-              <th>OrderId</th>
               <th>OrderDate</th>
               <th>Address</th>
-              <th>UserId</th>
-              <th>ProductId</th>
+              <th>UserName</th>
+              <th>ProductName</th>
+              <th>Price</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor='let ord of orders'>
-              <td>{{ord.orderId}}</td>
               <td>{{ord.orderDate | date: 'dd/MM/yyyy'}}</td>
               <td>{{ord.address}}</td>
-              <td>{{ord.userId}}</td>
-              <td>{{ord.productId}}</td>
+              <td>{{ord.users.name}}</td>
+              <td>{{ord.product.productName}}</td>
+              <td>{{ord.product.price}}</td>
               <td>
                 <button type="button" class="btn btn-danger" (click)="deleteorder(ord.orderId)">Delete</button>
               </td>

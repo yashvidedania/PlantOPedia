@@ -4,6 +4,7 @@ using PlantOPedia.Models;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Text;
 using PlantOPedia.Data;
+using Microsoft.EntityFrameworkCore;
 
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -50,11 +51,10 @@ namespace PlantOPedia.Controllers
             numBytesRequested: 32));
             //Console.WriteLine($"Hashed: {hashedPassword}");
 
-            var FindUser = _context.Users.FirstOrDefault(user => user.Email == login.Email && user.Password == hashedPassword);
+            var FindUser = _context.Users.Include(role => role.Role).FirstOrDefault(user => user.Email == login.Email && user.Password == hashedPassword);
             if (FindUser != null)
             {
-                SuccessResponse successResponse = new SuccessResponse() { Code = "200", Message = "Success"};
-                return Ok(successResponse);
+                return Ok(FindUser);
             }
             else
             {

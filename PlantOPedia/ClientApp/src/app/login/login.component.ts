@@ -30,6 +30,12 @@ export class LoginComponent implements OnInit {
       email: [undefined, Validators.email],
       password:  [undefined , Validators.maxLength(15)]
     })
+
+    if(this.LoginService.isUserLoggedIn())
+    {
+      this.router.navigate(['']);
+    }
+    
   }
 
   onSubmit(): void {
@@ -39,14 +45,13 @@ export class LoginComponent implements OnInit {
         if(isNotNullOrUndefine(loginresponse))
         {
           this.loginresponce = loginresponse;
-          // console.log("Responce from api" , this.loginresponce);
-          if (this.loginresponce.message === SuccessEnum.message ) {
-            this.router.navigate(['']);
-          }
-          else {
-            alert("Invalid Email or Password ");
-            this.router.navigate(['/login']);
-          }
+          this.setLoggedInUser(this.loginresponce);
+          this.router.navigate(['']);
+
+        }
+        else {
+          alert("Invalid Email or Password ");
+          this.router.navigate(['/login']);
         }
         
       },
@@ -55,6 +60,23 @@ export class LoginComponent implements OnInit {
       }
     )
   }
+
+
+
+  
+  getLoggedInUser(): string | null {
+    return localStorage.getItem('userId');
+  }
+
+  setLoggedInUser(user: any): void {
+    localStorage.setItem('userId', user.userId );
+    localStorage.setItem('roleType', user.role.roleType);
+    // this.router.navigate(['']);
+  }
+
+  // removeLoggedInUserDetails(): void {
+  //   localStorage.clear();
+  // }
 
   
 }

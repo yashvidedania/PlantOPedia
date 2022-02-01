@@ -12,7 +12,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   pageTitle: string = 'Product List';
   imageWidth = 100;
-  imageMargin = 8;
   imagefit = 'fit';
   sub!: Subscription;
 
