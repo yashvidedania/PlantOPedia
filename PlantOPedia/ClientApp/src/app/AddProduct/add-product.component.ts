@@ -11,6 +11,7 @@ import { SuccessEnum } from '../Shared/models'
 })
 export class AddProductComponent implements OnInit {
   productresponse:any;
+  productTypeResponse:any;
   
 
   constructor(private formBuilder: FormBuilder,
@@ -25,9 +26,18 @@ export class AddProductComponent implements OnInit {
         description:[undefined],
         price:[undefined],
         imageUrl:[undefined],
-        productTypeId:["44988d72-5550-4dae-c960-08d9e189d7a4"]
+        productTypeId:[undefined],
       })
+      this.productTypeDetail();
 
+  }
+  productTypeDetail(){
+    this.ProductService.getProductTypes().subscribe(
+        (productTypeResponse)=> {
+            this.productTypeResponse = productTypeResponse;
+            console.log("fetch data",this.productTypeResponse);
+        }
+    )
   }
   onSubmit():void {
     console.log(this.productform.value);

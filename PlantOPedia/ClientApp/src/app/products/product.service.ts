@@ -10,12 +10,17 @@ export class ProductService{
    
     
   private productUrl = 'https://localhost:7258/api/product';
+  private productTypeUrl = 'https://localhost:7258/api/productType';
 
   constructor(private http:HttpClient){}
 
     getProducts() : Observable <IProduct[]> {
         return this.http.get<IProduct[]>(this.productUrl);
     }
+
+  getProductTypes(): Observable<any> {
+    return this.http.get<any>(this.productTypeUrl);
+  }
     
     getProductById(pid : any ) : Observable<IProduct> {
         return this.http.get<IProduct>(this.productUrl + "/" + pid);
