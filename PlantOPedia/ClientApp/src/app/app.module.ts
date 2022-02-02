@@ -43,8 +43,8 @@ import { AuthGuard } from './auth.guard';
       { path: 'order', component: Orderlistcomponent, canActivate:[AuthGuard]  },
       { path: 'addorder/:id', component: AddOrderComponent, canActivate:[AuthGuard]},
       { path: 'login', component: LoginComponent },
-      {path: 'product',component:ProductsComponent, canActivate:[AuthGuard]},
-      {path:'product/:id',component:ProductDetailComponent,canActivate:[AuthGuard]},
+      {path: 'product',component:ProductsComponent},
+      {path:'product/:id',component:ProductDetailComponent},
       {path: 'products/:id', component:ProductUpdateComponent,canActivate:[AuthGuard]},
       {path:'addproduct',component:AddProductComponent,canActivate:[AuthGuard]}
     ])

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { LoginService } from "../login/login.service";
+import { isNotNullOrUndefine } from "../Shared/methods";
 import { IProduct } from "./product";
 import { ProductService } from "./product.service";
 
@@ -51,5 +52,20 @@ export class ProductDetailComponent implements OnInit{
           }
     
         })
+    }
+    isUserLoggedIn(): boolean {
+        // this.loggedIn = JSON.stringify(localStorage.getItem('userId'));
+        if(isNotNullOrUndefine(localStorage.getItem('userId')))
+        {
+          return true;
+        }
+        else{
+          window.alert("you are not loggedin");
+          this.router.navigate(['./login']);
+          return false;
+        }
       }
+    
+
+   
 }

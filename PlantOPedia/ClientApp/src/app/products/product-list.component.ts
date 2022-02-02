@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { isNotNullOrUndefine } from '../Shared/methods';
 import { IProduct } from './product';
 import { ProductService } from './product.service';
 
@@ -38,5 +39,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
     console.log('ondestroy is called......');
   }
+
 
 }
