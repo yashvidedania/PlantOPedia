@@ -14,7 +14,7 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  loggedIn: string = '';
+  loggedIn!: string ;
   // userName: string = '';
 
   checkLogin(loginObj: any): Observable<IUser> {

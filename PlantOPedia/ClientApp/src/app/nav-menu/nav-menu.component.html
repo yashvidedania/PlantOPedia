@@ -1,8 +1,8 @@
 <header>
   <nav
-    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
+    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  border-bottom box-shadow mb-3"
   >
-    <div class="container">
+    <div class="container text-white ">
       <a class="navbar-brand" [routerLink]="['/']">PlantOPedia</a>
       <button
         class="navbar-toggler"
@@ -25,25 +25,25 @@
             [routerLinkActive]="['link-active']"
             [routerLinkActiveOptions]="{ exact: true }"
           >
-            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+            <a class="nav-link " [routerLink]="['/']">Home</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/order']"
+            <a class="nav-link " *ngIf="roleFlag" [routerLink]="['/order']"
               >Order</a
             >
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/product']"
+            <a class="nav-link " [routerLink]="['/product']"
               >Product</a
             >
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" *ngIf="roleFlag" [routerLink]="['/addproduct']"
+            <a class="nav-link " *ngIf="roleFlag" [routerLink]="['/addproduct']"
               >Add Product</a
             >
           </li>
           <li class="nav-item" *ngIf="loggedIn" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" (click)="removeLoggedInUserDetails()" [routerLink]="['/login']"
+            <a class="nav-link " (click)="removeLoggedInUserDetails()" [routerLink]="['/login']"
               >Logout</a
             >
           </li>
