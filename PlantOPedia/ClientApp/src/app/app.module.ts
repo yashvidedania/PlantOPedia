@@ -18,6 +18,7 @@ import { AddProductComponent } from './AddProduct/add-product.component';
 import { ProductUpdateComponent } from './products/product-update.component';
 import { AuthGuard } from './auth.guard';
 import { FooterComponent } from './footer/footer.component';
+import { CanDeactivateGuard } from './form-auth.guard';
 
 @NgModule({
   declarations: [
@@ -42,16 +43,16 @@ import { FooterComponent } from './footer/footer.component';
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, outlet:"home", pathMatch: 'full' },
-      { path: 'order', component: Orderlistcomponent, canActivate:[AuthGuard]  },
-      { path: 'addorder/:id', component: AddOrderComponent, canActivate:[AuthGuard]},
+      { path: 'order', component: Orderlistcomponent, canActivate:[AuthGuard] },
+      { path: 'addorder/:id', component: AddOrderComponent, canActivate:[AuthGuard],canDeactivate:[CanDeactivateGuard] },
       { path: 'login', component: LoginComponent },
       {path: 'product',component:ProductsComponent},
       {path:'product/:id',component:ProductDetailComponent},
       {path: 'products/:id', component:ProductUpdateComponent,canActivate:[AuthGuard]},
-      {path:'addproduct',component:AddProductComponent,canActivate:[AuthGuard]}
+      {path:'addproduct',component:AddProductComponent,canActivate:[AuthGuard],canDeactivate:[CanDeactivateGuard]}
     ])
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard,CanDeactivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

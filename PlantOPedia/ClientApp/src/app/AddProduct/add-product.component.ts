@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { ProductService } from '../products/product.service'
 import { FormBuilder } from '@angular/forms'
 import { SuccessEnum } from '../Shared/models'
+import { Observable } from 'rxjs'
 
 @Component({
   selector: 'app-product',
@@ -55,5 +56,12 @@ export class AddProductComponent implements OnInit {
             }
         }
     )
+  }
+
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+    if (this.productform.dirty) {
+      return confirm('Your changes are unsaved!! Do you like to exit');
+    }
+    return true;
   }
 }

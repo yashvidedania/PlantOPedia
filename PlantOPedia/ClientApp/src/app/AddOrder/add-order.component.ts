@@ -8,6 +8,7 @@ import { IProduct } from "../products/product";
 import { ProductService } from "../products/product.service";
 import { SuccessEnum } from "../Shared/models";
 import { DatePipe, formatDate } from '@angular/common';
+import { Observable } from "rxjs";
 
 
 @Component({
@@ -85,6 +86,7 @@ export class AddOrderComponent implements OnInit {
               this.orderresponse = orderresponse;
               if (this.orderresponse.message === SuccessEnum.message ) {
                   alert("Order Placed Successfully");
+                  this.orderform.reset();
                   this.router.navigate(['/product']);
 
               }
@@ -93,6 +95,13 @@ export class AddOrderComponent implements OnInit {
               }
           }
       )
+  }
+
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+    if (this.orderform.dirty) {
+      return confirm('Your changes are unsaved!! Do you like to exit');
+    }
+    return true;
   }
   
 
