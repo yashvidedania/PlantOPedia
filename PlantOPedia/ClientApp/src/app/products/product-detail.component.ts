@@ -54,7 +54,6 @@ export class ProductDetailComponent implements OnInit{
         })
     }
     isUserLoggedIn(): boolean {
-        // this.loggedIn = JSON.stringify(localStorage.getItem('userId'));
         if(isNotNullOrUndefine(localStorage.getItem('userId')))
         {
           return true;
