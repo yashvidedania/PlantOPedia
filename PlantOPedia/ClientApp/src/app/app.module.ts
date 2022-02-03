@@ -17,6 +17,7 @@ import { ProductDetailComponent } from './products/product-detail.component';
 import { AddProductComponent } from './AddProduct/add-product.component';
 import { ProductUpdateComponent } from './products/product-update.component';
 import { AuthGuard } from './auth.guard';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AuthGuard } from './auth.guard';
     ProductsComponent,
     AddProductComponent,
     ProductDetailComponent,
-    ProductUpdateComponent
+    ProductUpdateComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -39,7 +41,7 @@ import { AuthGuard } from './auth.guard';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: HomeComponent, outlet:"home", pathMatch: 'full' },
       { path: 'order', component: Orderlistcomponent, canActivate:[AuthGuard]  },
       { path: 'addorder/:id', component: AddOrderComponent, canActivate:[AuthGuard]},
       { path: 'login', component: LoginComponent },

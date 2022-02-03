@@ -7,6 +7,9 @@ import { Orderservice_api } from "../orders/order.service";
 import { IProduct } from "../products/product";
 import { ProductService } from "../products/product.service";
 import { SuccessEnum } from "../Shared/models";
+import { DatePipe, formatDate } from '@angular/common';
+import * as moment from "moment";
+
 
 @Component({
   selector:'app-add',
@@ -14,10 +17,13 @@ import { SuccessEnum } from "../Shared/models";
 })
 export class AddOrderComponent implements OnInit {
 
-  dateVal = new Date();
+  dateVal = new Date(Date.now());
+  
+  pipe = new DatePipe('en-US');
   orderresponse: any;
   product!: IProduct; 
   uId: any;
+  
 
   
   constructor(private formBuilder: FormBuilder,
@@ -28,6 +34,8 @@ export class AddOrderComponent implements OnInit {
               private loginService: LoginService){}
 
   orderform:FormGroup=new FormGroup({});
+   myFormattedDate = this.pipe.transform(this.dateVal, 'short');
+
 
   ngOnInit(): void {
 
@@ -35,6 +43,7 @@ export class AddOrderComponent implements OnInit {
     this.uId =this.loginService.getLoggedInUser(); 
     this.initilizeformgroup();
     this.productDetail(productId); 
+    
   }
 
   initilizeformgroup() {
@@ -42,7 +51,10 @@ export class AddOrderComponent implements OnInit {
      userId: [this.uId],
      name: ['abcd'],
      productId:[undefined],
-     orderdate:[this.dateVal],
+     orderDate:[new Date()],
+    //  orderDate: [formatDate(this.dateVal, 'yyyy-MM-dd ', 'en')],
+    //  ordatedate: [this.myFormattedDate],
+    // orderDate: [moment().format('YYYY-MM-DD h:mm a')],
      address:[undefined],
      price: [undefined],
      productName: [undefined]
@@ -68,12 +80,13 @@ export class AddOrderComponent implements OnInit {
 
   onSubmit():void {
       console.log(this.orderform.value);
+      // this.orderform.controls.orderDate.setValue(new Date().toLocaleString());
       this.OrderService_api.addOrder(this.orderform.value).subscribe(
           (orderresponse) => {
               this.orderresponse = orderresponse;
               if (this.orderresponse.message === SuccessEnum.message ) {
-                  // this.router.navigate(['']);
                   alert("Order Placed Successfully");
+                  this.router.navigate(['/product']);
 
               }
               else {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from '../login/login.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class NavMenuComponent implements OnInit {
   roleType!:string |null;
   roleFlag!: boolean;
 
-  constructor (private loginService : LoginService){}
+  constructor (private loginService : LoginService,
+                private router : Router){}
 
   ngOnInit(): void {
     this.loggedIn = this.loginService.isUserLoggedIn();
@@ -36,6 +38,10 @@ export class NavMenuComponent implements OnInit {
 
   removeLoggedInUserDetails(): void {
     localStorage.clear();
+    // this.reloadCurrentComponent();
+    // this.router.navigate(['']);
+    window.location.reload();
+
   }
 
 }

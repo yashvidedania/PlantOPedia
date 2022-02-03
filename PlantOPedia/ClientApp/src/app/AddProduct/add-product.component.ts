@@ -47,6 +47,7 @@ export class AddProductComponent implements OnInit {
             if (this.productresponse.message === SuccessEnum.message) {
                 // this.router.navigate(['']);
                 alert("Product Added Successfully");
+                this.productform.reset();
 
             }
             else {

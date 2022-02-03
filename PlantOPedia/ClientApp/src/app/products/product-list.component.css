@@ -1,4 +1,12 @@
-
+.card{
+    background-color: transparent ;
+    border: none;
+}
+.card .row .col .card{
+    background-color: white;
+    /* border: 1px solid rgba(0, 0, 0, 0.829); */
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.829);
+}
 .col .card{
     overflow: hidden;
  }
@@ -6,7 +14,7 @@
      height: 200px !important;
      width: 100% !important;
  }
- .col.card{
-     height: 300px !important;
+ .col .card{
+     height: 100%;
  }
  

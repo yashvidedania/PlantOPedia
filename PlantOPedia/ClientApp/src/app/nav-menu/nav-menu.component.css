@@ -17,11 +17,15 @@ html {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 nav{
-  background-color: darkgreen ;
+  background-color: white ;
 }
 ul li a{
-  color: peachpuff;
+  color: seagreen;
+  cursor: pointer;
 
+}
+ul li a:hover{
+  color: springgreen;
 }
 
 .container .navbar-brand{

@@ -26,7 +26,10 @@ export class ProductUpdateComponent implements OnInit {
 
   productform: FormGroup = new FormGroup({});
 
-  constructor(private route: ActivatedRoute, private router: Router, private productService: ProductService, private formBuilder: FormBuilder) { }
+  constructor(private route: ActivatedRoute, 
+              private router: Router, 
+              private productService: ProductService,  
+              private formBuilder: FormBuilder) { }
 
 
 
@@ -90,6 +93,8 @@ export class ProductUpdateComponent implements OnInit {
         if (this.upresponce.message === SuccessEnum.message ) {
           // this.router.navigate(['']);
           alert("Product Updated Successfully");
+          this.router.navigate(['/product/', this.product.productId]);
+
         }
         else {
           alert("Some Error occured");

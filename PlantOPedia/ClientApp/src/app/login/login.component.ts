@@ -35,6 +35,9 @@ export class LoginComponent implements OnInit {
     {
       this.router.navigate(['']);
     }
+    else{
+      this.router.navigate(['/login']);
+    }
     
    }
 
@@ -47,6 +50,8 @@ export class LoginComponent implements OnInit {
           this.loginresponce = loginresponse;
           this.setLoggedInUser(this.loginresponce);
           this.router.navigate(['']);
+          this.reloadCurrentComponent();
+
 
         }
         else {
@@ -62,7 +67,9 @@ export class LoginComponent implements OnInit {
   }
 
 
-
+  reloadCurrentComponent() {
+    window.location.reload();
+   }
   
   getLoggedInUser(): string | null {
     return localStorage.getItem('userId');

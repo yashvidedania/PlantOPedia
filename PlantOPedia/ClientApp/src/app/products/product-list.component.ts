@@ -11,7 +11,6 @@ import { ProductService } from './product.service';
 })
 export class ProductsComponent implements OnInit, OnDestroy {
 
-  pageTitle: string = 'Product List';
   imageWidth = 100;
   imagefit = 'fit';
   sub!: Subscription;

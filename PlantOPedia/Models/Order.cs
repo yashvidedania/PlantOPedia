@@ -8,7 +8,7 @@ namespace PlantOPedia.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid OrderId { get; set; }
-        [Required]
+        
         public DateTime OrderDate { get; set; }
         [Required, MaxLength(100)]
         public string Address { get; set; }

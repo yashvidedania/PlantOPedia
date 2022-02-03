@@ -43,6 +43,7 @@ namespace PlantOPedia.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] Order order)
         {
+            order.OrderDate = order.OrderDate.ToLocalTime();
             _context.Orders.Add(order);
             _context.SaveChanges();
             SuccessResponse successResponse = new SuccessResponse() { Code = "200", Message = "Success" };
