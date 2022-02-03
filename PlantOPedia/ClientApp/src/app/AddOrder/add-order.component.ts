@@ -8,7 +8,6 @@ import { IProduct } from "../products/product";
 import { ProductService } from "../products/product.service";
 import { SuccessEnum } from "../Shared/models";
 import { DatePipe, formatDate } from '@angular/common';
-import * as moment from "moment";
 
 
 @Component({
