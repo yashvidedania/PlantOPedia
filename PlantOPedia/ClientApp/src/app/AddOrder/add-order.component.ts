@@ -23,6 +23,7 @@ export class AddOrderComponent implements OnInit {
   orderresponse: any;
   product!: IProduct; 
   uId: any;
+  uName: any;
   
 
   
@@ -40,7 +41,8 @@ export class AddOrderComponent implements OnInit {
   ngOnInit(): void {
 
     const productId = this.route.snapshot.paramMap.get('id');
-    this.uId =this.loginService.getLoggedInUser(); 
+    this.uId =this.loginService.getLoggedInUser();
+    this.uName = this.loginService.getLoggedInUserName(); 
     this.initilizeformgroup();
     this.productDetail(productId); 
     
@@ -49,7 +51,7 @@ export class AddOrderComponent implements OnInit {
   initilizeformgroup() {
     this.orderform = this.formBuilder.group({
      userId: [this.uId],
-     name: ['abcd'],
+     name: [this.uName],
      productId:[undefined],
      orderDate:[new Date()],
     //  orderDate: [formatDate(this.dateVal, 'yyyy-MM-dd ', 'en')],

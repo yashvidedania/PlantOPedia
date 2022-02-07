@@ -29,7 +29,11 @@ export class LoginService {
     return localStorage.getItem('roleType');
   }
 
+  getLoggedInUserName(): string | null {
+    return localStorage.getItem('userName')
+  }
 
+  
   isUserLoggedIn(): boolean {
     // this.loggedIn = JSON.stringify(localStorage.getItem('userId'));
     if(isNotNullOrUndefine(localStorage.getItem('userId')))
